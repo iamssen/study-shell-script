@@ -19,11 +19,17 @@ func0
 assert $? 0
 
 function funcHangup() {
+  # macos returns 1
+  # ubuntu returns 2
   ls -l badlocation
 }
 
 funcHangup &>/dev/null
-assert $? 1
+hangupExitStatus=$?
+if [ $hangupExitStatus -lt 1 ]; then
+  echo "exit status of funcHangup is $?"
+  exit 1
+fi
 
 function func1() {
   return 1
