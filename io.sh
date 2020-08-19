@@ -2,6 +2,9 @@
 
 source .util/assert.sh
 
+# >  = 1>
+# &> = 1> 2>
+
 file=$(mktemp)
 
 echo "override 1" >"$file"
