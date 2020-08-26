@@ -148,6 +148,20 @@ else
   exit 1
 fi
 
+# text =~ regex
+pattern="v1.0.0"
+if [[ "$pattern" =~ ^v1.0. ]]; then
+  echo 'ok' >/dev/null
+else
+  exit 1
+fi
+
+if [[ ! "$pattern" =~ ^v2.0. ]]; then
+  echo 'ok' >/dev/null
+else
+  exit 1
+fi
+
 # and
 if true && true; then
   echo 'ok' >/dev/null
